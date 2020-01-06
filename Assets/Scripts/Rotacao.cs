@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Rotacao : MonoBehaviour {
   [SerializeField] private Image arrow;
   [SerializeField] private Transform startPosition;
   public float arrowAngle = 0;
+  public bool allowMoveArrow = false;
+  public bool shot = false;
 
   void Start() {
     ArrowStartPosition();
@@ -14,6 +14,7 @@ public class Rotacao : MonoBehaviour {
   }
 
   void Update() {
+    ArrowRotationLimits();
     ArrowRotation();
     ArrowControlls();
   }
@@ -31,12 +32,30 @@ public class Rotacao : MonoBehaviour {
   }
 
   void ArrowControlls() {
-    if (Input.GetKey(KeyCode.UpArrow)) {
-      arrowAngle += 2.5f;
-    }
+    if (allowMoveArrow) {
+      float moveY = Input.GetAxis("Mouse Y");
 
-    if (Input.GetKey(KeyCode.DownArrow)) {
-      arrowAngle -= 2.5f;
+      if (moveY < 0) {
+        arrowAngle += 2.5f;
+      }
+
+      if (moveY > 0) {
+        arrowAngle -= 2.5f;
+      }
     }
+  }
+
+  void ArrowRotationLimits() {
+    if (arrowAngle <= 0) arrowAngle = 0;
+    if (arrowAngle > 90) arrowAngle = 90;
+  }
+
+  void OnMouseDown() {
+    allowMoveArrow = true;
+  }
+
+  void OnMouseUp() {
+    allowMoveArrow = false;
+    shot = true;
   }
 }
