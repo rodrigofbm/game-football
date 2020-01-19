@@ -6,6 +6,7 @@ public class LevelState : MonoBehaviour {
   private Text txtState;
   [SerializeField]
   private Button btnState;
+  private int unblocked;
 
   void Start() {
     txtState = GetComponent<Text>();
@@ -26,5 +27,13 @@ public class LevelState : MonoBehaviour {
 
   public Button getButton(string value) {
     return this.btnState;
+  }
+
+  public void setAllowed(int value) {
+    this.unblocked = value;
+  }
+
+  public int getAllowed(string value) {
+    return this.unblocked;
   }
 }

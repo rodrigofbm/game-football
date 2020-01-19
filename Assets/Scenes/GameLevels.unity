@@ -647,7 +647,7 @@ MonoBehaviour:
   listLevel:
   - levelTxt: 01
     unblocked: 1
-    allowed: 0
+    allowed: 1
   - levelTxt: 02
     unblocked: 0
     allowed: 0

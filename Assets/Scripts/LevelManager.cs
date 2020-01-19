@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
@@ -18,14 +18,26 @@ public class LevelManager : MonoBehaviour {
 
       lvlState = newButton.GetComponent<LevelState>();
       lvlState.setText(level.levelTxt);
-      lvlState.setButtonState(level.unblocked);
 
+      if (PlayerPrefs.GetInt("Level" + level.levelTxt) == 1) {
+        level.unblocked = true;
+        level.allowed = 1;
+      }
+
+      lvlState.setButtonState(level.unblocked);
+      lvlState.setAllowed(level.allowed);
+
+      newButton.GetComponent<Button>().onClick.AddListener(() => OpenLevel("Level" + level.levelTxt));
       newButton.transform.SetParent(panelLevels, false);
     }
   }
 
   void Start() {
     RenderListLevel();
+  }
+
+  void OpenLevel(string level) {
+    SceneManager.LoadScene(level);
   }
 
 }
