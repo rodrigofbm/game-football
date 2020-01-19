@@ -2,8 +2,11 @@
 
 public class AudioManager : MonoBehaviour {
    public static AudioManager audioManager;
-   public AudioClip[] clips;
+   public AudioClip[] bgClips;
    public AudioSource bgMusics;
+
+   public AudioClip[] fxClips;
+   public AudioSource fxMusics;
 
    void Awake() {
       if (audioManager == null) {
@@ -27,6 +30,13 @@ public class AudioManager : MonoBehaviour {
    }
 
    AudioClip GetClip() {
-      return clips[Random.Range(0, clips.Length)];
+      int index = Random.Range(0, bgClips.Length);
+
+      return bgClips[index];
+   }
+
+   public void PlayClipFX(int index) {
+      fxMusics.clip = fxClips[index];
+      fxMusics.Play();
    }
 }

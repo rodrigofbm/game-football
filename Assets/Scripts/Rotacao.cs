@@ -59,6 +59,7 @@ public class Rotacao : MonoBehaviour {
    void OnMouseUp() {
       allowMoveArrow = false;
       arrow.SetActive(false);
+      AudioManager.audioManager.PlayClipFX(2);
       shot = true;
    }
 }
