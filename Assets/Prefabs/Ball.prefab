@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 138286634768726956}
   - component: {fileID: 138286634768726995}
   - component: {fileID: 138286634768726994}
-  - component: {fileID: 114130736083482918}
-  - component: {fileID: 503412565}
+  - component: {fileID: 1565263183}
+  - component: {fileID: 1565263182}
+  - component: {fileID: -215516355086781004}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Player
@@ -109,7 +110,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138286634768726993}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -122,7 +123,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &114130736083482918
+--- !u!95 &1565263183
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138286634768726993}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab24bf60db9810f12b915c252871ddff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1565263182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,15 +151,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 138286634768726993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 352eb0b0f39117cb1bb484608f77cb62, type: 3}
+  m_Script: {fileID: 11500000, guid: b5ba46031fd6d5dd9bcbe6a59a4107e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 0}
-  startPosition: {fileID: 0}
-  arrowAngle: 0
-  allowMoveArrow: 0
-  shot: 0
---- !u!114 &503412565
+--- !u!114 &-215516355086781004
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,9 +163,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 138286634768726993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42450cb38a5db0050b248f64a089b13a, type: 3}
+  m_Script: {fileID: 11500000, guid: fd41b99af2c1adaff924fe2cfa2b1628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotacao: {fileID: 114130736083482918}
-  imgArrowGreen: {fileID: 0}
-  force: 0
