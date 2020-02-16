@@ -11,6 +11,11 @@ TagManager:
   - LeftWall
   - RightWall
   - KillPlayer
+  - NumberCoins
+  - NumberOfBalls
+  - WinPanel
+  - LosePanel
+  - PausePanel
   layers:
   - Default
   - TransparentFX
