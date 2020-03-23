@@ -594,6 +594,7 @@ MonoBehaviour:
   ballStartPos: {fileID: 2114133160}
   ballsInScene: 0
   gameOver: 0
+  playerWin: 0
   numBalls: 3
   shoot: 0
 --- !u!4 &109600569
@@ -703,7 +704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150533306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.26, y: -3.67, z: -0.78125}
+  m_LocalPosition: {x: -9.16, y: -4.49, z: -0.78125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -992,7 +993,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberCoinsUI: {fileID: 1579382044}
   numberBallsUI: {fileID: 0}
+  winPanel: {fileID: 0}
   losePanel: {fileID: 0}
+  pausePanel: {fileID: 0}
 --- !u!4 &251939892
 Transform:
   m_ObjectHideFlags: 0
@@ -1381,7 +1384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &416205059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3575,7 +3578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894037797}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.13, y: -3.86, z: -0.78125}
+  m_LocalPosition: {x: 9.13, y: -4.53, z: -0.78125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3790,7 +3793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1942542688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4165,6 +4168,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 432926641, guid: 34422ad914c288ccfb2cf4d284c3b760, type: 3}
+      propertyPath: m_TagString
+      value: GoalLine
+      objectReference: {fileID: 0}
     - target: {fileID: 7643638848230630669, guid: 34422ad914c288ccfb2cf4d284c3b760,
         type: 3}
       propertyPath: m_Name

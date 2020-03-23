@@ -16,6 +16,7 @@ TagManager:
   - WinPanel
   - LosePanel
   - PausePanel
+  - GoalLine
   layers:
   - Default
   - TransparentFX

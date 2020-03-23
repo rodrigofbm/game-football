@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
   [SerializeField] private Transform ballStartPos;
   [SerializeField] private int ballsInScene;
   [SerializeField] private bool gameOver = false;
+  public bool playerWin = false;
   public int numBalls = 3;
   public int shoot = 0;
 
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour {
   }
 
   void SpawnBall() {
-    if (numBalls > 0 && ballsInScene == 0) {
+    if (numBalls > 0 && ballsInScene == 0 && !playerWin && !gameOver) {
       Instantiate(ball, ballStartPos.position, Quaternion.identity);
       ballsInScene += 1;
       numBalls -= 1;
@@ -50,5 +51,10 @@ public class GameManager : MonoBehaviour {
 
       UIManager.uIManager.ShowGameOverUI();
     }
+  }
+
+  public void PlayerWin() {
+    UIManager.uIManager.ShowWinUI();
+    playerWin = true;
   }
 }

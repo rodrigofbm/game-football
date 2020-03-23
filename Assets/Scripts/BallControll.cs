@@ -145,5 +145,8 @@ public class BallControll : MonoBehaviour {
   private void OnTriggerEnter2D(Collider2D other) {
     if (other.gameObject.CompareTag("Enemy"))
       GameManager.gameManager.KillPlayer(this.gameObject);
+
+    if (other.gameObject.CompareTag("GoalLine"))
+      GameManager.gameManager.PlayerWin();
   }
 }
