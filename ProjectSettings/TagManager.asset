@@ -13,6 +13,9 @@ TagManager:
   - LimitRight
   - BallsUI
   - NumberCoins
+  - WinPanel
+  - LosePanel
+  - PausePanel
   layers:
   - Default
   - TransparentFX

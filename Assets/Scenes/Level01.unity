@@ -992,6 +992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberCoinsUI: {fileID: 1579382044}
   numberBallsUI: {fileID: 0}
+  losePanel: {fileID: 0}
 --- !u!4 &251939892
 Transform:
   m_ObjectHideFlags: 0
@@ -1376,7 +1377,7 @@ GameObject:
   - component: {fileID: 416205060}
   m_Layer: 5
   m_Name: PauseMenu
-  m_TagString: Untagged
+  m_TagString: PausePanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2382,11 +2383,11 @@ GameObject:
   - component: {fileID: 1038391828}
   m_Layer: 5
   m_Name: LosePanel
-  m_TagString: Untagged
+  m_TagString: LosePanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1038391825
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3785,7 +3786,7 @@ GameObject:
   - component: {fileID: 1942542691}
   m_Layer: 5
   m_Name: WinPanel
-  m_TagString: Untagged
+  m_TagString: WinPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

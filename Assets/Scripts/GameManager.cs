@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour {
     ScoreManager.scoreManager.UpdateScore();
     UIManager.uIManager.UpdateUI();
     SpawnBall();
+
+    GameOver();
   }
 
   void SpawnBall() {
@@ -40,5 +42,13 @@ public class GameManager : MonoBehaviour {
   public void KillPlayer(GameObject palyer) {
     Destroy(palyer);
     ballsInScene = 0;
+  }
+
+  void GameOver() {
+    if (numBalls <= 0 && ballsInScene == 0) {
+      gameOver = true;
+
+      UIManager.uIManager.ShowGameOverUI();
+    }
   }
 }
