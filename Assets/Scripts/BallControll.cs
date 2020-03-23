@@ -8,6 +8,8 @@ public class BallControll : MonoBehaviour {
   private GameObject arrow;
   private Image arrowImg;
   private Transform startPosition;
+  private Transform limitLeft;
+  private Transform limitRigth;
   public float arrowAngle = 0;
   public bool allowMoveArrow = false;
   public bool shot = false;
@@ -17,11 +19,13 @@ public class BallControll : MonoBehaviour {
   public float force = 0;
 
   void Awake() {
+    limitLeft = GameObject.FindGameObjectWithTag("LimitLeft").transform;
+    limitRigth = GameObject.FindGameObjectWithTag("LimitRight").transform;
     arrow = GameObject.FindGameObjectWithTag("ArrowGO");
     arrowImg = GameObject.FindGameObjectWithTag("ArrowGreen").GetComponent<Image>();
     startPosition = GameObject.FindGameObjectWithTag("StartPosition").GetComponent<Transform>();
 
-    arrow.SetActive(false);
+    HandleArrows(false);
   }
 
   void Start() {
@@ -40,11 +44,13 @@ public class BallControll : MonoBehaviour {
     // About ball forces
     ApplyForce();
     FillArrow();
+
+    CheckScreenLimits();
   }
   //about ball rotation
 
   void ArrowStartPosition() {
-    arrowImg.rectTransform.position = this.transform.position;
+    arrow.transform.position = this.transform.position;
   }
 
   void BallStartPosition() {
@@ -52,7 +58,7 @@ public class BallControll : MonoBehaviour {
   }
 
   void ArrowRotation() {
-    arrowImg.rectTransform.eulerAngles = new Vector3(0, 0, arrowAngle);
+    arrow.transform.eulerAngles = new Vector3(0, 0, arrowAngle);
   }
 
   void ArrowControlls() {
@@ -77,17 +83,19 @@ public class BallControll : MonoBehaviour {
   void OnMouseDown() {
     if (GameManager.gameManager.shoot == 0) {
       allowMoveArrow = true;
-      arrow.SetActive(true);
+      HandleArrows(true);
     }
   }
 
   void OnMouseUp() {
     allowMoveArrow = false;
-    arrow.SetActive(false);
+    HandleArrows(false);
+
     if (GameManager.gameManager.shoot == 0 & force > 0) {
       AudioManager.audioManager.PlayClipFX(2);
       shot = true;
       GameManager.gameManager.shoot = 1;
+      arrowImg.fillAmount = 0;
     }
   }
 
@@ -119,7 +127,23 @@ public class BallControll : MonoBehaviour {
     }
   }
 
+  void HandleArrows(bool enable) {
+    arrow.GetComponent<Image>().enabled = enable;
+    arrowImg.enabled = enable;
+  }
+
   void SetBallAsDynamic() {
     this.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+  }
+
+  void CheckScreenLimits() {
+    if (gameObject.transform.position.x > limitRigth.position.x) {
+      GameManager.gameManager.KillPlayer(this.gameObject);
+    }
+  }
+
+  private void OnTriggerEnter2D(Collider2D other) {
+    if (other.gameObject.CompareTag("Enemy"))
+      GameManager.gameManager.KillPlayer(this.gameObject);
   }
 }

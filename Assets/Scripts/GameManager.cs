@@ -4,17 +4,16 @@ public class GameManager : MonoBehaviour {
   public static GameManager gameManager;
   [SerializeField] private GameObject ball;
   [SerializeField] private Transform ballStartPos;
-  [SerializeField] private int numBalls;
   [SerializeField] private int ballsInScene;
   [SerializeField] private bool gameOver = false;
+  public int numBalls = 3;
   public int shoot = 0;
 
   void Awake() {
     if (gameManager == null) {
       gameManager = this;
       DontDestroyOnLoad(gameObject);
-    }
-    else {
+    } else {
       Destroy(gameObject);
     }
   }
@@ -38,4 +37,8 @@ public class GameManager : MonoBehaviour {
     }
   }
 
+  public void KillPlayer(GameObject palyer) {
+    Destroy(palyer);
+    ballsInScene = 0;
+  }
 }
