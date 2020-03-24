@@ -12,6 +12,16 @@ public class LevelManager : MonoBehaviour {
   [SerializeField]
   private Transform panelLevels;
 
+  void Awake() {
+    Destroy(GameObject.Find("GameManager"));
+    Destroy(GameObject.Find("UiManager"));
+    Destroy(GameObject.FindGameObjectWithTag("Player"));
+  }
+
+  void Start() {
+    RenderListLevel();
+  }
+
   void RenderListLevel() {
     foreach (var level in listLevel) {
       GameObject newButton = Instantiate(button) as GameObject;
@@ -30,10 +40,6 @@ public class LevelManager : MonoBehaviour {
       newButton.GetComponent<Button>().onClick.AddListener(() => OpenLevel("Level" + level.levelTxt));
       newButton.transform.SetParent(panelLevels, false);
     }
-  }
-
-  void Start() {
-    RenderListLevel();
   }
 
   void OpenLevel(string level) {

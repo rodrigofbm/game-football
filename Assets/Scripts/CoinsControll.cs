@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ControlCoins : MonoBehaviour {
+public class CoinsControll : MonoBehaviour {
   void OnTriggerEnter2D(Collider2D other) {
     if (other.gameObject.CompareTag("Player")) {
       ScoreManager.scoreManager.coinsWon += ScoreManager.scoreManager.AddCoins(30);

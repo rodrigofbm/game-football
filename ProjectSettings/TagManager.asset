@@ -20,6 +20,12 @@ TagManager:
   - BtnPause
   - BtnResumeGame
   - BtnPlayAgainLose
+  - BtnMenuLevelsLose
+  - BtnPlayAgainWin
+  - BtnMenuLevelsWin
+  - BtnPlayAgainPause
+  - BtnMenuLevelsPause
+  - BtnNextLevel
   layers:
   - Default
   - TransparentFX

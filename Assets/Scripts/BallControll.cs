@@ -1,14 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class BallControll : MonoBehaviour {
   //about ball rotation
+  [SerializeField]
   private GameObject arrow;
+  [SerializeField]
   private Image arrowImg;
+  [SerializeField]
   private Transform startPosition;
+  [SerializeField]
   private Transform limitLeft;
+  [SerializeField]
   private Transform limitRigth;
   public float arrowAngle = 0;
   public bool allowMoveArrow = false;
@@ -47,8 +50,8 @@ public class BallControll : MonoBehaviour {
 
     CheckScreenLimits();
   }
-  //about ball rotation
 
+  //about ball rotation
   void ArrowStartPosition() {
     arrow.transform.position = this.transform.position;
   }
@@ -100,7 +103,6 @@ public class BallControll : MonoBehaviour {
   }
 
   // About ball forces
-
   void ApplyForce() {
     float angX = Mathf.Cos(arrowAngle * Mathf.Deg2Rad);
     float angY = Mathf.Sin(arrowAngle * Mathf.Deg2Rad);
@@ -127,6 +129,7 @@ public class BallControll : MonoBehaviour {
     }
   }
 
+  //disable/enable arrows imgs
   void HandleArrows(bool enable) {
     arrow.GetComponent<Image>().enabled = enable;
     arrowImg.enabled = enable;
@@ -137,7 +140,8 @@ public class BallControll : MonoBehaviour {
   }
 
   void CheckScreenLimits() {
-    if (gameObject.transform.position.x > limitRigth.position.x) {
+    if (gameObject.transform.position.x > limitRigth.position.x
+          || gameObject.transform.position.x < limitLeft.position.x) {
       GameManager.gameManager.KillPlayer(this.gameObject);
     }
   }
@@ -146,7 +150,9 @@ public class BallControll : MonoBehaviour {
     if (other.gameObject.CompareTag("Enemy"))
       GameManager.gameManager.KillPlayer(this.gameObject);
 
-    if (other.gameObject.CompareTag("GoalLine"))
+    if (other.gameObject.CompareTag("GoalLine")) {
       GameManager.gameManager.PlayerWin();
+    }
+
   }
 }

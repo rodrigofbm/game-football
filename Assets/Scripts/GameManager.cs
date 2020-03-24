@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour {
   [SerializeField] private int ballsInScene;
   [SerializeField] private bool gameOver = false;
   public int coinsWon = 0;
-  public int currentScene;
   public bool gameStarted = false;
   public bool playerWin = false;
   public int numBalls = 3;
@@ -27,8 +26,12 @@ public class GameManager : MonoBehaviour {
   }
 
   void LoadGameManager(Scene scene, LoadSceneMode mode) {
-    currentScene = SceneManager.GetActiveScene().buildIndex;
+    GameObject player = GameObject.FindGameObjectWithTag("Player");
     StartGame();
+
+    if (player) {
+      Destroy(player.gameObject);
+    }
   }
 
   void Start() {
@@ -69,16 +72,21 @@ public class GameManager : MonoBehaviour {
   public void PlayerWin() {
     UIManager.uIManager.ShowWinUI();
     playerWin = true;
+    gameOver = false;
     gameStarted = false;
   }
 
   public void StartGame() {
+    ResetGame();
+
+    StartCoroutine(UIManager.uIManager.SetPanelsDelay(0.01f));
+  }
+
+  public void ResetGame() {
     gameStarted = false;
     playerWin = false;
     gameOver = false;
     numBalls = 3;
     ballsInScene = 0;
-
-    StartCoroutine(UIManager.uIManager.SetPanelsDelay(0.001f));
   }
 }
