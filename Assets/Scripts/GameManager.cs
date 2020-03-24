@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
   public static GameManager gameManager;
@@ -6,6 +7,9 @@ public class GameManager : MonoBehaviour {
   [SerializeField] private Transform ballStartPos;
   [SerializeField] private int ballsInScene;
   [SerializeField] private bool gameOver = false;
+  public int coinsWon = 0;
+  public int currentScene;
+  public bool gameStarted = false;
   public bool playerWin = false;
   public int numBalls = 3;
   public int shoot = 0;
@@ -14,9 +18,17 @@ public class GameManager : MonoBehaviour {
     if (gameManager == null) {
       gameManager = this;
       DontDestroyOnLoad(gameObject);
+      DontDestroyOnLoad(ballStartPos);
     } else {
       Destroy(gameObject);
     }
+
+    SceneManager.sceneLoaded += LoadGameManager;
+  }
+
+  void LoadGameManager(Scene scene, LoadSceneMode mode) {
+    currentScene = SceneManager.GetActiveScene().buildIndex;
+    StartGame();
   }
 
   void Start() {
@@ -51,10 +63,22 @@ public class GameManager : MonoBehaviour {
 
       UIManager.uIManager.ShowGameOverUI();
     }
+    gameStarted = false;
   }
 
   public void PlayerWin() {
     UIManager.uIManager.ShowWinUI();
     playerWin = true;
+    gameStarted = false;
+  }
+
+  public void StartGame() {
+    gameStarted = false;
+    playerWin = false;
+    gameOver = false;
+    numBalls = 3;
+    ballsInScene = 0;
+
+    StartCoroutine(UIManager.uIManager.SetPanelsDelay(0.001f));
   }
 }

@@ -17,6 +17,9 @@ TagManager:
   - LosePanel
   - PausePanel
   - GoalLine
+  - BtnPause
+  - BtnResumeGame
+  - BtnPlayAgainLose
   layers:
   - Default
   - TransparentFX
