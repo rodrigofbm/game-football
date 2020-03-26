@@ -13,8 +13,10 @@ public class LevelManager : MonoBehaviour {
   private Transform panelLevels;
 
   void Awake() {
-    Destroy(GameObject.Find("GameManager"));
-    Destroy(GameObject.Find("UiManager"));
+    Destroy(GameObject.FindGameObjectWithTag("GameManager"));
+    Destroy(GameObject.FindGameObjectWithTag("UIManager"));
+    Destroy(GameObject.FindGameObjectWithTag("AudioManager"));
+    Destroy(GameObject.FindGameObjectWithTag("ScoreManager"));
     Destroy(GameObject.FindGameObjectWithTag("Player"));
   }
 
@@ -51,6 +53,6 @@ public class LevelManager : MonoBehaviour {
 [System.Serializable]
 public class Level {
   public string levelTxt;
-  public bool unblocked;
-  public int allowed;
+  public bool unblocked = false;
+  public int allowed = 0;
 }

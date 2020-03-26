@@ -233,6 +233,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d926711de16c6799b8ae9277986de59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 6066985102907021418, guid: d6771cd957eb87e8083a76bf8b8aeb64,
+    type: 3}
+  uiManager: {fileID: 6259697721311481011, guid: 4f02101e59156ee94864f329a49425a9,
+    type: 3}
+  scoreManager: {fileID: 682119290784675760, guid: e35660dffe4c8e28a9b8c32fd2b2bac4,
+    type: 3}
+  audioManager: {fileID: 5041896499200284692, guid: e563de97c17641891b500b57084098f6,
+    type: 3}
   sceneIndex: 0
 --- !u!4 &517565336
 Transform:

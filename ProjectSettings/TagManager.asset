@@ -26,6 +26,10 @@ TagManager:
   - BtnPlayAgainPause
   - BtnMenuLevelsPause
   - BtnNextLevel
+  - GameManager
+  - AudioManager
+  - ScoreManager
+  - UIManager
   layers:
   - Default
   - TransparentFX

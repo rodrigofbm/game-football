@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
   public int shoot = 0;
 
   void Awake() {
+    ballStartPos = GameObject.FindGameObjectWithTag("StartPosition").GetComponent<Transform>();
+
     if (gameManager == null) {
       gameManager = this;
       DontDestroyOnLoad(gameObject);
@@ -26,7 +28,12 @@ public class GameManager : MonoBehaviour {
   }
 
   void LoadGameManager(Scene scene, LoadSceneMode mode) {
+    InitState();
+  }
+
+  void InitState() {
     GameObject player = GameObject.FindGameObjectWithTag("Player");
+
     StartGame();
 
     if (player) {
@@ -35,7 +42,9 @@ public class GameManager : MonoBehaviour {
   }
 
   void Start() {
+    InitState();
     ScoreManager.scoreManager.GameStartScore();
+    //PlayerPrefs.DeleteAll();
   }
 
   private void Update() {
@@ -70,10 +79,14 @@ public class GameManager : MonoBehaviour {
   }
 
   public void PlayerWin() {
+    int temp = CurrentScene.currentScene.sceneIndex + 1;
+
     UIManager.uIManager.ShowWinUI();
     playerWin = true;
     gameOver = false;
     gameStarted = false;
+
+    PlayerPrefs.SetInt("Level0" + temp, 1);
   }
 
   public void StartGame() {

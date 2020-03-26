@@ -24,10 +24,15 @@ public class UIManager : MonoBehaviour {
     }
 
     SceneManager.sceneLoaded += LoadUIManager;
+    GetUI();
     StartCoroutine(SetPanelsDelay(0.001f));
   }
 
   void LoadUIManager(Scene scene, LoadSceneMode mode) {
+    GetUI();
+  }
+
+  void GetUI() {
     if (CurrentScene.currentScene.sceneIndex != 0) {
       numberCoinsUI = GameObject.FindGameObjectWithTag("NumberCoins").GetComponent<Text>();
       numberBallsUI = GameObject.FindGameObjectWithTag("BallsUI").GetComponent<Text>();
