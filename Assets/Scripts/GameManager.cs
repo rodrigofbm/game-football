@@ -5,8 +5,8 @@ public class GameManager : MonoBehaviour {
   public static GameManager gameManager;
   [SerializeField] private GameObject ball;
   [SerializeField] private Transform ballStartPos;
-  [SerializeField] private int ballsInScene;
   [SerializeField] private bool gameOver = false;
+  public int ballsInScene;
   public int coinsWon = 0;
   public bool gameStarted = false;
   public bool playerWin = false;
@@ -74,8 +74,8 @@ public class GameManager : MonoBehaviour {
       gameOver = true;
 
       UIManager.uIManager.ShowGameOverUI();
+      gameStarted = false;
     }
-    gameStarted = false;
   }
 
   public void PlayerWin() {
@@ -83,20 +83,18 @@ public class GameManager : MonoBehaviour {
 
     UIManager.uIManager.ShowWinUI();
     playerWin = true;
-    gameOver = false;
-    gameStarted = false;
 
     PlayerPrefs.SetInt("Level0" + temp, 1);
   }
 
   public void StartGame() {
     ResetGame();
+    gameStarted = true;
 
     StartCoroutine(UIManager.uIManager.SetPanelsDelay(0.01f));
   }
 
   public void ResetGame() {
-    gameStarted = false;
     playerWin = false;
     gameOver = false;
     numBalls = 3;

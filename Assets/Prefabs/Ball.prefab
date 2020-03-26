@@ -166,3 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd41b99af2c1adaff924fe2cfa2b1628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrow: {fileID: 0}
+  arrowImg: {fileID: 0}
+  startPosition: {fileID: 0}
+  limitLeft: {fileID: 0}
+  limitRigth: {fileID: 0}
+  arrowAngle: 0
+  allowMoveArrow: 0
+  shot: 0
+  force: 0
